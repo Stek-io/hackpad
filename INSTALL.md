@@ -45,7 +45,7 @@ INSTALLING ON POSIX COMPATIBLE SYSTEMS
   * Visit http://localhost:9000/ep/account/validate-email?email=YOUR_EMAIL&token=TOKEN
   * Hurrah, you now have an account!
 
-* If you want emoji support go to https://github.com/github/gemoji/tree/master/images/emoji/unicode
+* If you want emoji support go to https://github.com/github/gemoji/tree/choose-set/images/emoji/unicode
   and copy the images into etherpad/src/static/img/emoji/unicode/
   
 IMAGE UPLOAD FUNCTIONALITY
@@ -112,3 +112,25 @@ INSTRUCTIONS ON HOW TO SETUP SOCIAL LOGINS
         * googleClientSecret
     * Restart hackpad with bin/run.sh
     * Google login should be functional now
+    
+INSTRUCTIONS ON HOW TO SETUP DROPBOX LOGIN (FOR USER PAD SYNCING)
+
+* DROPBOX
+    * Go to the Dropbox developers page: https://www.dropbox.com/developers
+    * Click "My apps"
+    * Click the "Create app" button
+    * At the next screen select:
+        * Choose an API
+            * Dropbox API
+        * Choose the type of access
+            * App folder or Full dropbox
+        * Lastly
+            * Give your app a name
+    * Click at "Create app" 
+    * At your newly created app copy the "App key" & "App secret" values
+    * At the "Redirect URIs" field add you domain followed by "/ep/dropbox/auth_callback" and click add
+    * Now at our configuration file paste the credentials you copied to the corresponding fields (etherpad/etc/etherpad.local.properties)
+        * DROPBOX_KEY
+        * DROPBOX_SECRET
+    * Restart hackpad with bin/run.sh
+    * Dropbox login should be functional now
