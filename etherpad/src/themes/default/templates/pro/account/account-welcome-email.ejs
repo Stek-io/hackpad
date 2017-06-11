@@ -14,15 +14,20 @@ limitations under the License. */ %>
 Hello <%= account.fullName %>!
 <% if (adminAccount) { %>
 <%= adminAccount.fullName %> has created a Hackpad account for you on <%=
-request.host %> (<%= siteName %>).  You can sign in by clicking on the following link:
+request.host %>.  You can login into this Hackpad space with a Stek.io account here:
 <% } else { %>
 Thank you for signing up for a 30-day free trial of your Hackpad Site.  You can sign in by clicking on the following link:
 <% } %>
 <%- signinLink %>
 
-For help signing in, or general support issues, please email <%= appjet.config.supportEmailAddress %>.
+If you don't have a Stek.io account yet, ask the person who invited you ( <%= adminAccount.fullName %>) to add you to his or her Stek.io team. You may now think it's a hassle, but in the future, you'll benefit, we promise! At Stek.io we're building a set of open source tools that can work smoothly together. This is only the beginning!
+
+For help signing in, or general support issues, please go to our support site: <%= appjet.config.supportSite %>.
+
+All the best,
+The Stek team.
+- https://stek.io
 
 --
 This email was sent to <%= toEmail %> from Hackpad.
 If you received it in error, you may safely ignore it.
-

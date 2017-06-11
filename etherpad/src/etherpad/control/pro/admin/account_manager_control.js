@@ -198,7 +198,7 @@ function sendWelcomeEmail(account, tempPass) {
   var body = renderTemplateAsString('pro/account/account-welcome-email.ejs', {
     account: account,
     adminAccount: getSessionProAccount() && getSessionProAccount().id != account.id && getSessionProAccount(),
-    signinLink: tempPass ? pro_accounts.getTempSigninUrl(account, tempPass, host) : utils.absoluteURL("/", {}, domainRecord.subDomain),
+    signinLink: utils.absoluteURL("/", {}, domainRecord.subDomain),
     toEmail: toAddr,
     siteName: pro_config.getConfig(account.domainId).siteName
   });
