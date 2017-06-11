@@ -111,7 +111,7 @@ function _topDiv(id, name) {
   if (m) {
     delete getSession()[name];
     saveSession();
-    return DIV({id: id}, m);
+    return DIV({id: id}, P(m));
   } else {
     return '';
   }

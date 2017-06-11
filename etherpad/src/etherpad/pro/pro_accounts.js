@@ -954,7 +954,7 @@ function authenticateTempSignIn(uid, tempPass) {
     signInSession(account);
     return; // forward on to cont destination
   } else {
-    getSession().accountMessage = "Please choose a new password";
+    getSession().accountMessage = 'You now have been added to this hackpad space, however if you want to be able to login in the future you need a '+ A({href:"https://stek.io"}, "stek.io") +' account';
     getSession().passwordReset = true;
     signInSession(account);
 
