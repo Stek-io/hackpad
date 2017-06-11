@@ -434,7 +434,7 @@ function _getHTMLForChanges(pad, padTitle, segments, colorIdForAuthor, opt_appro
   if (opt_approveChangesHTML) {
     htmlParts.push("<p style=\"color:#888\">To reject this change, just ignore this email</p>");
   } else {
-    htmlParts.push("<p style=\"color:#888\">Reply to this email directly or edit it live on hackpad: <a href=\"" + padUrl + "\">" + padTitle + "</a></p>");
+    htmlParts.push("<p style=\"color:#888\">Edit this pad live on hackpad: <a href=\"" + padUrl + "\">" + padTitle + "</a></p>");
   }
 
   htmlParts.push("</body></html>");
