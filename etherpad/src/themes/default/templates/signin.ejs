@@ -111,6 +111,11 @@
         </a>
       <% } %>
 
+      <a id="login-facebook" class="fb-login-required stek-button" href="https://hackpad.local/" >
+        <p class="sign-in-paragraph">Sign in with </p>
+        <img class="fb-connect-button" src="/static/img/stek-logo.png" style="width: 90%;height: auto;">
+      </a>
+
       <% if (helpers.allowCustomServiceSignin()) { %>
         <a id="login-stek" href="<%=serviceSignInUrl%>" class="stek-login-required" target="<%= typeof(googleButtonTarget) != 'undefined' ? googleButtonTarget : '_self' %>">
           <img class="fb-connect-button" src="<%=helpers.getOauthImage()%>">
