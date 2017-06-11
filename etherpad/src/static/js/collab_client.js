@@ -164,7 +164,7 @@ function getCollabClient(ace2editor, serverVars, initialUserInfo, options, keepS
       }
       if (!padutils.getIsMobile() && clientVars.padId == "AWELCOMEPAD") {
         $('body').addClass('guestbanner');
-        $("#guestbanner #guest-banner-msg").html("Your changes are not being saved. <a href=\"#\">Sign In</a> to start using Hackpad.")
+        $("#guestbanner #guest-banner-msg").html("Your changes are not being saved. <a href=\"#\">Sign In with Stek.io</a> to start using Hackpad.")
           .effect("pulsate",{times:1}, 500, function() { $(this).stop(true); }).click(function() { modals.showModal('#page-login-box', 0); return false; });
       } else {
         modals.showHTMLModal($("#page-login-box"));
