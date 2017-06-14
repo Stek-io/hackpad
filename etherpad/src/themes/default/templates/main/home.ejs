@@ -81,18 +81,7 @@ limitations under the License. */ %>
   </div>
   <div id="middle" class="iphonehide">
     <div id="customerlogos">
-      <div id="used-by">Used &amp; loved by:</div>
-      <img src="<%=helpers.cdn()%>/static/img/marketing/logos/airbnb.png"/>
-      <img src="<%=helpers.cdn()%>/static/img/marketing/logos/stripe.png"/>
-      <img src="<%=helpers.cdn()%>/static/img/marketing/logos/upworthy.png"/>
-      <img src="<%=helpers.cdn()%>/static/img/marketing/logos/meteor.png"/>
-      <img src="<%=helpers.cdn()%>/static/img/marketing/logos/twitch.png"/>
-      <%- template.use('button', null, {
-        id: 'try-it',
-        className: 'iphonehide ipadhide',
-        onclick: "$('html,body').animate({scrollTop: $(this).offset().top - 50}, 1000);",
-        label: 'Take a test drive'
-      }); %>
+      <div id="used-by">Powered with love by: <a target="_blank" class="stek-footer-link" href="https://stek.io">stek.io</a></div>
     </div>
   </div>
   <div id="blur" class="iphonehide"></div>
