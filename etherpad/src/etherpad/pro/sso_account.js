@@ -71,7 +71,7 @@ function handleLoginCallback() {
 
       if (typeof authorization.expires_in === 'undefined') {
         // Default to one year expiry time for the access token
-        authorization.expires_in = 0031556926;
+        authorization.expires_in = 31556926;
       }
 
       saveAuthorization(authorization, signedInAccount.id);
