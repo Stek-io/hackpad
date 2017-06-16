@@ -50,7 +50,6 @@ DISABLE_WORKSPACE_CREATION=$(escapeChars ${DISABLE_WORKSPACE_CREATION:-__disable
 IS_PRODUCTION=$(escapeChars ${IS_PRODUCTION:-true})
 DEV_MODE=$(escapeChars ${DEV_MODE:-false})
 MIXPANEL_TOKEN=$(escapeChars ${MIXPANEL_TOKEN:-__mixpanel_token__})
-DB_PARAMETERS=$(escapeChars ${DB_PARAMETERS:-''})
 PROCESS_INBOX=$(escapeChars ${PROCESS_INBOX:-false})
 cp hackpad/etherpad/etc/etherpad.local.properties.tmpl hackpad/etherpad/etc/etherpad.local.properties
 
@@ -92,7 +91,6 @@ sed -i.bak s/__dropbox_app_secret__/$DROPBOX_SECRET/g hackpad/etherpad/etc/ether
 sed -i.bak s/__disable_dropbox_sync__/$DISABLE_DROPBOX_SYNC/g hackpad/etherpad/etc/etherpad.local.properties
 sed -i.bak s/__disable_creating_workspaces__/$DISABLE_WORKSPACE_CREATION/g hackpad/etherpad/etc/etherpad.local.properties
 sed -i.bak s/__mixpanel_token__/$MIXPANEL_TOKEN/g hackpad/etherpad/etc/etherpad.local.properties
-sed -i.bak s/__dbc_parameters__/$DB_PARAMETERS/g hackpad/etherpad/etc/etherpad.local.properties
 sed -i.bak s/__process_inbox__/$PROCESS_INBOX/g hackpad/etherpad/etc/etherpad.local.properties
 sed -i.bak "s/^\(etherpad\.imgDefaultDomain = \).*$/\1$CANONICAL_DOMAIN/g" hackpad/etherpad/etc/etherpad.local.properties
 sed -i.bak "s/^\(topdomains = \).*$/\1$TOP_DOMAINS/g" hackpad/etherpad/etc/etherpad.local.properties

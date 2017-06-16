@@ -63,7 +63,6 @@ Getting it running
         IS_PRODUCTION - Define if the environment you will be building the docker image is production or not (defaults to true)
         DEV_MODE - Enable/Disable devMode (defaults to false)
         MIXPANEL_TOKEN - Mixpanel token
-        DB_PARAMETERS - Add extra parameters to the jdbc url
         PROCESS_INBOX - Set to true or false (defaults to false)
         
         
