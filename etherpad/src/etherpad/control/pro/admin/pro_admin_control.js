@@ -47,10 +47,10 @@ var _ONDEMAND_ONLY = 3;
 function _getLeftnavItems() {
   var nav = [
     _PRO, [
-      [_PRO, "account-manager/", "Manage Accounts"],
-      [_PRO, "pro-config", "Configuration"],
-      [_PNE_ONLY, "pne-config", "Private Server Configuration"],
-      [_PRO, "import-export", "Import & Export"]
+      [_PRO, "account-manager/", "Manage Accounts"]
+      //[_PRO, "pro-config", "Configuration"],
+      //[_PNE_ONLY, "pne-config", "Private Server Configuration"],
+      //[_PRO, "import-export", "Import & Export"]
       //[_PRO, "/ep/padlist/all_pads.zip", "Download All Pads"],
       //[_PRO, "recover-padtext", "Recover Deleted Pad"]
     ]
@@ -125,7 +125,7 @@ function onRequest() {
   var disp = new Dispatcher();
   disp.addLocations([
     [DirMatcher('/ep/admin/account-manager/'), forward(account_manager_control)],
-    [DirMatcher('/ep/admin/pro-config/'), forward(pro_config_control)],
+    //[DirMatcher('/ep/admin/pro-config/'), forward(pro_config_control)],
   ]);
   if (disp.dispatch()) {
     return true;
