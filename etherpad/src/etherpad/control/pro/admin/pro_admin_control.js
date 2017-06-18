@@ -180,7 +180,8 @@ var _documentedServerOptions = [
 function render_pne_config_get() {
   renderAdminPage('pne-config', {
     propKeys: _documentedServerOptions,
-    appjetConfig: appjet.config
+    appjetConfig: {}
+    //appjetConfig: appjet.config
   });
 }
 
