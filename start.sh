@@ -25,7 +25,9 @@ FB_SECRET=$(escapeChars ${FB_SECRET:-no_facebookClientSecret})
 FB_ID=$(escapeChars ${FB_ID:-no_facebookClientId})
 GOOGLE_SECRET=$(escapeChars ${GOOGLE_SECRET:-no_googleClientSecret})
 GOOGLE_ID=$(escapeChars ${GOOGLE_ID:-no_googleClientId})
+CUSTOM_BRANDING_NAME=$(escapeChars ${CUSTOM_BRANDING_NAME:-__custom_branding_name__})
 CUSTOM_EMAIL_ADDRESS=$(escapeChars ${CUSTOM_EMAIL_ADDRESS:-__custom_email_address__})
+SUPPORT_EMAIL_ADDRESS=$(escapeChars ${SUPPORT_EMAIL_ADDRESS:-__support_email_address__})
 SMTP_SERVER=$(escapeChars ${SMTP_SERVER:-__smtp_server__})
 SMTP_USER=$(escapeChars ${SMTP_USER:-__smtp_user__})
 SMTP_PASS=$(escapeChars ${SMTP_PASS:-__smtp_password__})
@@ -77,7 +79,9 @@ sed -i.bak s/__oauth_client_secret__/$OAUTH_CLIENT_SECRET/g hackpad/etherpad/etc
 sed -i.bak s/__oauth_client_id__/$OAUTH_CLIENT_ID/g hackpad/etherpad/etc/etherpad.local.properties
 sed -i.bak s/__custom_oauth_client_name__/$CUSTOM_OAUTH_CLIENT_NAME/g hackpad/etherpad/etc/etherpad.local.properties
 sed -i.bak s/__custom_oauth_client_image__/$CUSTOM_OAUTH_CLIENT_IMAGE/g hackpad/etherpad/etc/etherpad.local.properties
+sed -i.bak s/__custom_branding_name__/$CUSTOM_BRANDING_NAME/g hackpad/etherpad/etc/etherpad.local.properties
 sed -i.bak s/__custom_email_address__/$CUSTOM_EMAIL_ADDRESS/g hackpad/etherpad/etc/etherpad.local.properties
+sed -i.bak s/__support_email_address__/$SUPPORT_EMAIL_ADDRESS/g hackpad/etherpad/etc/etherpad.local.properties
 sed -i.bak s/__smtp_server__/$SMTP_SERVER/g hackpad/etherpad/etc/etherpad.local.properties
 sed -i.bak s/__smtp_user__/$SMTP_USER/g hackpad/etherpad/etc/etherpad.local.properties
 sed -i.bak s/__smtp_password__/$SMTP_PASS/g hackpad/etherpad/etc/etherpad.local.properties
