@@ -51,7 +51,7 @@ function handleLoginCallback() {
       }
     } catch (e) {
       log.logException(e);
-      setSigninNotice("Failed to connect. Please try again.");
+        account_control.setSigninNotice("Failed to connect. Please try again.");
       response.redirect("/ep/account/sign-in");
     }
   }
@@ -148,7 +148,13 @@ function acquireServiceAuthorizationToken(code) {
   }, null/*options*/, true /*acceptErrorCodes*/);
 
   if (result) {
-    return JSON.parse(result.content);
+      try {
+        var content = JSON.parse(result.response);
+      } catch(e) {
+          account_control.setSigninNotice("Failed to connect. Please try again.");
+          response.redirect("/ep/account/sign-in");
+      }
+      return content;
   }
 }
 
