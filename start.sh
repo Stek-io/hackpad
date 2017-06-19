@@ -55,6 +55,7 @@ MIXPANEL_TOKEN=$(escapeChars ${MIXPANEL_TOKEN:-__mixpanel_token__})
 DB_PARAMETERS=$(escapeChars ${DB_PARAMETERS:-''})
 PROCESS_INBOX=$(escapeChars ${PROCESS_INBOX:-false})
 WELCOME_PAD_SOURCE_ID=$(escapeChars ${WELCOME_PAD_SOURCE_ID:-__welcome_pad_source_id__})
+FEATURE_HELP_PAD_ID=$(escapeChars ${FEATURE_HELP_PAD_ID:-__welcome_pad_source_id__})
 
 
 cp hackpad/etherpad/etc/etherpad.local.properties.tmpl hackpad/etherpad/etc/etherpad.local.properties
@@ -102,6 +103,7 @@ sed -i.bak s/__mixpanel_token__/$MIXPANEL_TOKEN/g hackpad/etherpad/etc/etherpad.
 sed -i.bak s/__dbc_parameters__/$DB_PARAMETERS/g hackpad/etherpad/etc/etherpad.local.properties
 sed -i.bak s/__process_inbox__/$PROCESS_INBOX/g hackpad/etherpad/etc/etherpad.local.properties
 sed -i.bak s/__welcome_pad_source_id__/$WELCOME_PAD_SOURCE_ID/g hackpad/etherpad/etc/etherpad.local.properties
+sed -i.bak s/__feature_help_pad_id__/$FEATURE_HELP_PAD_ID/g hackpad/etherpad/etc/etherpad.local.properties
 sed -i.bak "s/^\(etherpad\.imgDefaultDomain = \).*$/\1$CANONICAL_DOMAIN/g" hackpad/etherpad/etc/etherpad.local.properties
 sed -i.bak "s/^\(topdomains = \).*$/\1$TOP_DOMAINS/g" hackpad/etherpad/etc/etherpad.local.properties
 sed -i.bak "s/^\(useHttpsUrls = \).*$/\1$USE_HTTPS_URLS/g" hackpad/etherpad/etc/etherpad.local.properties
