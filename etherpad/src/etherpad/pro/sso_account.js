@@ -144,11 +144,11 @@ function acquireServiceAuthorizationToken(code) {
     client_id: clientId(),
     client_secret: clientSecret(),
     redirect_uri: callbackUri(),
-    grant_type: "authorization_code",
+    grant_type: "authorization_code"
   }, null/*options*/, true /*acceptErrorCodes*/);
 
   if (result) {
-    return JSON.parse(result.response);
+    return JSON.parse(result.content);
   }
 }
 
