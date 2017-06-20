@@ -1043,11 +1043,12 @@ function completeGoogleSignIn(email, fullName, tryAgainUrl) {
 
 // Once the oAuth2 flow is completed, we proceed here
 function completeServiceSignIn(email, fullName, tryAgainUrl) {
+    
   // Provision for mixed case emails
   email = email.toLowerCase();
 
   var u = pro_accounts.getAccountByEmail(email);
-
+  
   // There is not currently an account for this user in this domain
   if (!u) {
     // We'll create one if we're allowed to

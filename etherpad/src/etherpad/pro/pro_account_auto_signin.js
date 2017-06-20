@@ -163,13 +163,11 @@ function checkAutoSignin(cont, optSkipUnifiedAccounts) {
   }
 
   if (shouldAttemptGoogleAutoSignin()) {
-    var account = pro_accounts.getAccountById(record.accountId);
     setGoogleAutoSigninCookie(false); // prevent infinite loop if something's off
     response.redirect(google_account.googleOAuth2URLForLogin(account.email));
   }
 
   if (shouldAttemptOauthServiceAutoSignin()) {
-    var account = pro_accounts.getAccountById(record.accountId);
     setOauthServiceAutoSigninCookie(false); // prevent infinite loop if something's off
     response.redirect(sso_account.serviceOAuth2URLForLogin(account.email));
   }

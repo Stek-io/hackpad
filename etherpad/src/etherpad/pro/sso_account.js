@@ -40,9 +40,11 @@ var CLIENT_DETAILS;
 function handleLoginCallback() {
   var userInfo;
 
+  var subDomain = request.cookies['SUBDOMAIN_OAUTH'];
+  
   // Clear the nonce
   deleteOAuthSessionVars();
-
+  
   if (request.params.code) {
     try {
       var authorization = acquireServiceAuthorizationToken(request.params.code);
@@ -55,7 +57,7 @@ function handleLoginCallback() {
       response.redirect("/ep/account/sign-in");
     }
   }
-
+  
   if (userInfo) {
     // Provision for mixed case emails
     var accountEmail = userInfo.email.toLowerCase();
@@ -65,6 +67,7 @@ function handleLoginCallback() {
       log.custom("custom-service", "Trying to sign in as " + emailAddress + " " +accountEmail.length);
       var signedInAccount = account_control.completeServiceSignIn(emailAddress, userInfo.name, "/ep/account/sign-in");
 
+      
       if (!signedInAccount) {
         response.redirect("/");
       }
@@ -77,7 +80,8 @@ function handleLoginCallback() {
       saveAuthorization(authorization, signedInAccount.id);
       sessions.getSession().isOauthServiceConnected = true;
 
-      response.redirect("/");
+      var url = request.scheme + '://' + subDomain + '.' + helpers.canonicalDomain();
+      response.redirect(url);
 
     }
   }
@@ -109,6 +113,22 @@ function serviceOAuth2URLForLogin(optIdentity) {
 }
 
 function serviceOAuth2URL(scopes, optIdentity, optState) {
+
+  var subDomain = request.host.replace('.' + helpers.canonicalDomain(), '');
+
+  if (!subDomain) { // on home page
+    // Do something @@@@@@@@@@@@@@@@
+  } else {
+    response.setCookie({
+      name: 'SUBDOMAIN_OAUTH',
+      value: subDomain,
+      path: "/",
+      domain: sessions.getScopedDomain(),
+      secure: appjet.config.useHttpsUrls,
+      httpOnly: true /* disallow client js access */
+    });
+  }
+  
   scopes = scopes || DEFAULT_SCOPES;
   var params = {
     client_id: clientId(),
