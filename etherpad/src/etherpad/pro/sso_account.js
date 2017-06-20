@@ -40,7 +40,7 @@ var CLIENT_DETAILS;
 function handleLoginCallback() {
   var userInfo;
 
-  var subDomain = request.cookies['SUBDOMAIN_OAUTH'];
+  var subDomain = request.cookies['SUBDOMAIN_OAUTH'] ? request.cookies['SUBDOMAIN_OAUTH'] + '.' : '';
   
   // Clear the nonce
   deleteOAuthSessionVars();
@@ -80,7 +80,7 @@ function handleLoginCallback() {
       saveAuthorization(authorization, signedInAccount.id);
       sessions.getSession().isOauthServiceConnected = true;
 
-      var url = request.scheme + '://' + subDomain + '.' + helpers.canonicalDomain();
+      var url = request.scheme + '://' + subDomain + helpers.canonicalDomain();
       response.redirect(url);
 
     }
@@ -115,6 +115,9 @@ function serviceOAuth2URLForLogin(optIdentity) {
 function serviceOAuth2URL(scopes, optIdentity, optState) {
 
   var subDomain = request.host.replace('.' + helpers.canonicalDomain(), '');
+  if (request.host == helpers.canonicalDomain()) {
+    subDomain = '';
+  }
 
   if (!subDomain) { // on home page
     // Do something @@@@@@@@@@@@@@@@
