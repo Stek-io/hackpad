@@ -277,7 +277,7 @@ function render_sign_in_get() {
     path: "/",
     domain: '.' + helpers.canonicalDomain(),
     secure: appjet.config.useHttpsUrls,
-    httpOnly: false
+    httpOnly: true
   });
   
   helpers.addClientVars({ facebookClientId: appjet.config.facebookClientId });
