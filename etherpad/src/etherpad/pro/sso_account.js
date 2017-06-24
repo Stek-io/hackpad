@@ -51,7 +51,7 @@ function handleLoginCallback() {
       }
     } catch (e) {
       log.logException(e);
-        account_control.setSigninNotice("Failed to connect. Please try again, or contact us at helpdesk@stek.io");
+      account_control.setSigninNotice("Failed to connect. Please try again, or contact us at helpdesk@stek.io");
       response.redirect("/ep/account/sign-in");
     }
   }
@@ -144,11 +144,11 @@ function acquireServiceAuthorizationToken(code) {
     client_id: clientId(),
     client_secret: clientSecret(),
     redirect_uri: callbackUri(),
-    grant_type: "authorization_code",
+    grant_type: "authorization_code"
   }, null/*options*/, true /*acceptErrorCodes*/);
 
   if (result) {
-    return JSON.parse(result.response);
+    return JSON.parse(result.content);
   }
 }
 

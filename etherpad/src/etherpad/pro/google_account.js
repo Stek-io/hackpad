@@ -72,7 +72,7 @@ function handleLoginCallback() {
       }
     } catch (e) {
       log.logException(e);
-        account_control.setSigninNotice("Failed to connect to Google.  Please try again.");
+      setSigninNotice("Failed to connect to Google.  Please try again.");
       response.redirect(state.shortContUrl || "/ep/account/sign-in");
     }
   }
