@@ -40,9 +40,13 @@ var CLIENT_DETAILS;
 function handleLoginCallback() {
   var userInfo;
 
+  var subDomain = request.cookies['SUBDOMAIN_OAUTH'] ? request.cookies['SUBDOMAIN_OAUTH'] + '.' : '';
+
+  log.custom("MARK", request.cookies);
+  
   // Clear the nonce
   deleteOAuthSessionVars();
-
+  
   if (request.params.code) {
     try {
       var authorization = acquireServiceAuthorizationToken(request.params.code);
@@ -55,7 +59,7 @@ function handleLoginCallback() {
       response.redirect("/ep/account/sign-in");
     }
   }
-
+  
   if (userInfo) {
     // Provision for mixed case emails
     var accountEmail = userInfo.email.toLowerCase();
@@ -65,6 +69,7 @@ function handleLoginCallback() {
       log.custom("custom-service", "Trying to sign in as " + emailAddress + " " +accountEmail.length);
       var signedInAccount = account_control.completeServiceSignIn(emailAddress, userInfo.name, "/ep/account/sign-in");
 
+      
       if (!signedInAccount) {
         response.redirect("/");
       }
@@ -77,7 +82,9 @@ function handleLoginCallback() {
       saveAuthorization(authorization, signedInAccount.id);
       sessions.getSession().isOauthServiceConnected = true;
 
-      response.redirect("/");
+      var theScheme = appjet.config.useHttpsUrls ? 'https' : (request.headers['X-Forwarded-Proto']  ? request.headers['X-Forwarded-Proto'] : request.scheme);
+      var url = theScheme + '://' + subDomain + helpers.canonicalDomain();
+      response.redirect(url);
 
     }
   }
@@ -109,6 +116,7 @@ function serviceOAuth2URLForLogin(optIdentity) {
 }
 
 function serviceOAuth2URL(scopes, optIdentity, optState) {
+  
   scopes = scopes || DEFAULT_SCOPES;
   var params = {
     client_id: clientId(),
